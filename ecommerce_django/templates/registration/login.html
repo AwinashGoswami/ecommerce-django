@@ -1,0 +1,27 @@
+{% extends 'master.html' %}
+
+{% block body %}
+<section id="form" style="margin-left: 30px;">
+    <div class="container">
+        <div class="col-sm-4 col-sm-offset-4">
+            <div class="signup-form">
+                <h2>Login in account</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                    {{ field.errors }}
+                    <label> {{field.label_tag}} </label>
+                    <p>{{field}}</p>
+                    {% endfor %}
+                    <a href="#" style="float: right;"> <span>Forget Password?</span> </a>
+                    <br>
+                    <button type="submit" class="btn btn-default">Login</button>
+                    <br>
+                    <a href="{% url 'signup' %}" style="margin-left: 150px; color: black;">Create Account</a>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}
